@@ -1,5 +1,3 @@
-# CS50 Project Ideas
-
 A curated collection of **project ideas for CS50 final projects**.
 
 This repository provides structured ideas that students can use when deciding what to build for their final project. Each idea contains a short overview, key features, and the programming concepts involved.
@@ -48,20 +46,3 @@ More languages and tracks may be added in the future.
 | [Text Adventure Game](text-adventure-game.md) | A story-based interactive command-line game. |
 
 ---
-
-# Repository Structure
-```
-CS50P-Project-Ideas
-│
-├── README.md                      <-You are here.
-├── password-manager.md
-├── todo-list-manager.md
-├── expense-tracker.md
-├── flashcard-learning-app.md
-├── quiz-game-engine.md
-├── markdown-to-html-converter.md
-├── weather-cli-tool.md
-├── file-organizer.md
-├── text-adventure-game.md
-└── pomodoro-timer.md
-```
