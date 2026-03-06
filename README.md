@@ -20,9 +20,9 @@ More languages and tracks may be added in the future.
 
 | Project | Description |
 |-------|-------------|
-| [Pomodoro Timer](pomodoro-timer.md) | A productivity timer based on the Pomodoro technique. |
+| [Pomodoro Timer](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#pomodoro-timer) | A productivity timer based on the Pomodoro technique. |
 | [To-Do List Manager](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#to-do-list-manager) | A simple program for creating and managing tasks. |
-| [Flashcard Learning App](flashcard-learning-app.md) | A study tool that quizzes users using flashcards. |
+| [Flashcard Learning App](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#flashcard-learning-app) | A study tool that quizzes users using flashcards. |
 
 ---
 
@@ -31,9 +31,9 @@ More languages and tracks may be added in the future.
 | Project | Description |
 |-------|-------------|
 | [Expense Tracker](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#expense-tracker) | Track personal income and expenses with summaries. |
-| [Weather CLI Tool](weather-cli-tool.md) | Retrieve and display weather data from an API. |
-| [File Organizer](file-organizer.md) | Automatically organize files into categorized folders. |
-| [Quiz Game Engine](quiz-game-engine.md) | A customizable quiz system with scoring. |
+| [Weather CLI Tool](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#weather-cli-tool) | Retrieve and display weather data from an API. |
+| [File Organizer](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#file-organizer) | Automatically organize files into categorized folders. |
+| [Quiz Game Engine](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#quiz-game-engine) | A customizable quiz system with scoring. |
 
 ---
 
@@ -42,7 +42,7 @@ More languages and tracks may be added in the future.
 | Project | Description |
 |-------|-------------|
 | [Password Manager](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#password-manager) | Securely store and retrieve passwords. |
-| [Markdown to HTML Converter](markdown-to-html-converter.md) | Convert Markdown documents into HTML pages. |
-| [Text Adventure Game](text-adventure-game.md) | A story-based interactive command-line game. |
+| [Markdown to HTML Converter](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#markdown-to-html-converter) | Convert Markdown documents into HTML pages. |
+| [Text Adventure Game](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#text-adventure-game) | A story-based interactive command-line game. |
 
 ---
