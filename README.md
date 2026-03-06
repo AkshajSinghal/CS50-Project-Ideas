@@ -23,7 +23,7 @@ More languages and tracks may be added in the future.
 | Project | Description |
 |-------|-------------|
 | [Pomodoro Timer](pomodoro-timer.md) | A productivity timer based on the Pomodoro technique. |
-| [To-Do List Manager](todo-list-manager.md) | A simple program for creating and managing tasks. |
+| [To-Do List Manager](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#to-do-list-manager) | A simple program for creating and managing tasks. |
 | [Flashcard Learning App](flashcard-learning-app.md) | A study tool that quizzes users using flashcards. |
 
 ---
@@ -32,7 +32,7 @@ More languages and tracks may be added in the future.
 
 | Project | Description |
 |-------|-------------|
-| [Expense Tracker](expense-tracker.md) | Track personal income and expenses with summaries. |
+| [Expense Tracker](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#expense-tracker) | Track personal income and expenses with summaries. |
 | [Weather CLI Tool](weather-cli-tool.md) | Retrieve and display weather data from an API. |
 | [File Organizer](file-organizer.md) | Automatically organize files into categorized folders. |
 | [Quiz Game Engine](quiz-game-engine.md) | A customizable quiz system with scoring. |
@@ -43,7 +43,7 @@ More languages and tracks may be added in the future.
 
 | Project | Description |
 |-------|-------------|
-| [Password Manager](password-manager.md) | Securely store and retrieve passwords. |
+| [Password Manager](https://github.com/AkshajSinghal/CS50P-Project-Ideas?tab=readme-ov-file#password-manager) | Securely store and retrieve passwords. |
 | [Markdown to HTML Converter](markdown-to-html-converter.md) | Convert Markdown documents into HTML pages. |
 | [Text Adventure Game](text-adventure-game.md) | A story-based interactive command-line game. |
 
