@@ -1,3 +1,6 @@
+[![Logo](/logo.png)](images/logo.jpg)
+
+
 A curated collection of **project ideas for CS50 final projects**.
 
 This repository provides structured ideas that students can use when deciding what to build for their final project. Each idea contains a short overview, key features, and the programming concepts involved.
