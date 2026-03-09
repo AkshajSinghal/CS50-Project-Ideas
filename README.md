@@ -1,4 +1,4 @@
-[![Logo](/logo.png)](images/logo.jpg)
+[![Logo](/logo.jpg)](images/logo.jpg)
 
 
 A curated collection of **project ideas for CS50 final projects**.
