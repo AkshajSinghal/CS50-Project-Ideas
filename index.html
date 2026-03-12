@@ -278,54 +278,71 @@ const repos = {
 };
 
 const content = document.querySelector(".content");
+const viewer = document.getElementById("viewer");
 
 async function loadRepos() {
 
   for (const [course, repo] of Object.entries(repos)) {
 
     const section = document.createElement("section");
-    section.innerHTML = `<h2>${course}</h2><div class="project-grid"></div>`;
-    content.insertBefore(section, document.getElementById("viewer"));
+
+    const id = course.split(" ")[0].toLowerCase();
+
+    section.innerHTML = `
+      <h2 id="${id}">${course}</h2>
+      <div class="project-grid"></div>
+    `;
+
+    content.insertBefore(section, viewer);
 
     const grid = section.querySelector(".project-grid");
 
-    const url =
-      `https://raw.githubusercontent.com/AkshajSinghal/${repo}/main/README.md`;
-
     try {
 
-      const res = await fetch(url);
+      const url =
+      `https://raw.githubusercontent.com/AkshajSinghal/${repo}/main/README.md?nocache=${Date.now()}`;
+
+      const res = await fetch(url,{cache:"no-store"});
       const md = await res.text();
 
       const html = marked.parse(md);
 
       const parser = new DOMParser();
-      const doc = parser.parseFromString(html, "text/html");
+      const doc = parser.parseFromString(html,"text/html");
 
       const links = doc.querySelectorAll("li a");
 
       links.forEach(link => {
 
-        const title = link.textContent;
-        const file = link.getAttribute("href").replace("./","");
+        const title = link.textContent.trim();
+        const file = link.getAttribute("href");
+
+        if(!file.endsWith(".md")) return;
 
         const card = document.createElement("div");
         card.className = "project";
 
         card.innerHTML = `
-          <span class="tag">${course.split("–")[0]}</span>
+          <span class="tag">${course.split(" ")[0]}</span>
           <h2>${title}</h2>
           <p>Project idea from ${repo}</p>
-          <a href="#" onclick="loadIdea('${repo}','${file}')">Read more →</a>
+          <a href="#" data-repo="${repo}" data-file="${file}">
+            Read more →
+          </a>
         `;
+
+        card.querySelector("a").onclick = function(e){
+          e.preventDefault();
+          loadIdea(this.dataset.repo,this.dataset.file);
+        };
 
         grid.appendChild(card);
 
       });
 
-    } catch (err) {
+    } catch(err) {
 
-      console.error("Failed loading repo:", repo);
+      console.error("Error loading repo:",repo,err);
 
     }
 
@@ -333,22 +350,26 @@ async function loadRepos() {
 
 }
 
-function loadIdea(repo,file){
+async function loadIdea(repo,file){
 
-const url =
-`https://raw.githubusercontent.com/AkshajSinghal/${repo}/main/${file}`;
+  const url =
+  `https://raw.githubusercontent.com/AkshajSinghal/${repo}/main/${file}?nocache=${Date.now()}`;
 
-fetch(url)
-.then(r => r.text())
-.then(md => {
-document.getElementById("viewer").innerHTML =
-marked.parse(md);
-});
+  const res = await fetch(url,{cache:"no-store"});
+  const md = await res.text();
+
+  viewer.innerHTML = marked.parse(md);
+
+  window.scrollTo({
+    top: viewer.offsetTop - 40,
+    behavior: "smooth"
+  });
 
 }
 
 loadRepos();
 
 </script>
+
 </body>
 </html>
