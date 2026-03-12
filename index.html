@@ -88,7 +88,7 @@ grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 gap: 20px;
 }
 
-/* Project Card */
+/* Cards */
 
 .project {
 background: white;
@@ -123,7 +123,7 @@ border-radius: 4px;
 margin-bottom: 10px;
 }
 
-/* Markdown viewer */
+/* Markdown Viewer */
 
 #viewer {
 background: white;
@@ -162,8 +162,8 @@ font-size: 14px;
 
 <h3>Courses</h3>
 
-<a href="#cs50p">CS50P – Python</a>
 <a href="#cs50x">CS50x</a>
+<a href="#cs50p">CS50P</a>
 <a href="#cs50w">CS50W</a>
 <a href="#cs50ai">CS50AI</a>
 <a href="#cs50sql">CS50SQL</a>
@@ -172,50 +172,91 @@ font-size: 14px;
 
 <div class="content">
 
-<h2 id="cs50p">CS50P – Python Project Ideas</h2>
+<!-- CS50P -->
+
+<h2 id="cs50p">CS50P – Python Projects</h2>
 
 <div class="project-grid">
 
 <div class="project">
-<span class="tag">Advanced</span>
-<h2>Password Manager</h2>
-<p>A CLI tool that securely stores passwords.</p>
-<a href="#" onclick="loadIdea('password-manager.md')">Read more →</a>
-</div>
-
-<div class="project">
-<span class="tag">Beginner</span>
-<h2>To-Do List Manager</h2>
-<p>A tool for managing daily tasks.</p>
-<a href="#" onclick="loadIdea('todo-list-manager.md')">Read more →</a>
-</div>
-
-<div class="project">
-<span class="tag">Intermediate</span>
-<h2>Expense Tracker</h2>
-<p>Track daily spending and financial habits.</p>
-<a href="#" onclick="loadIdea('expense-tracker.md')">Read more →</a>
-</div>
-
-<div class="project">
 <span class="tag">Beginner</span>
 <h2>Flashcard Learning App</h2>
-<p>A CLI study tool using flashcards.</p>
-<a href="#" onclick="loadIdea('flashcard-learning-app.md')">Read more →</a>
+<p>A CLI flashcard study tool.</p>
+<a href="#" onclick="loadIdea('CS50P-Project-Ideas','flashcard-learning-app.md')">Read more →</a>
 </div>
 
 <div class="project">
 <span class="tag">Beginner</span>
 <h2>Pomodoro Timer</h2>
 <p>A productivity timer.</p>
-<a href="#" onclick="loadIdea('pomodoro-timer.md')">Read more →</a>
+<a href="#" onclick="loadIdea('CS50P-Project-Ideas','pomodoro-timer.md')">Read more →</a>
+</div>
+
+</div>
+
+<!-- CS50x -->
+
+<h2 id="cs50x">CS50x – Computer Science Projects</h2>
+
+<div class="project-grid">
+
+<div class="project">
+<span class="tag">Intermediate</span>
+<h2>Mini Shell</h2>
+<p>Build a basic command shell in C.</p>
+<a href="#" onclick="loadIdea('CS50x-Project-Ideas','mini-shell.md')">Read more →</a>
+</div>
+
+</div>
+
+<!-- CS50W -->
+
+<h2 id="cs50w">CS50W – Web Programming</h2>
+
+<div class="project-grid">
+
+<div class="project">
+<span class="tag">Advanced</span>
+<h2>Reddit Clone</h2>
+<p>A social discussion platform.</p>
+<a href="#" onclick="loadIdea('CS50W-Project-Ideas','reddit-clone.md')">Read more →</a>
+</div>
+
+</div>
+
+<!-- CS50AI -->
+
+<h2 id="cs50ai">CS50AI – Artificial Intelligence</h2>
+
+<div class="project-grid">
+
+<div class="project">
+<span class="tag">Advanced</span>
+<h2>Chess AI</h2>
+<p>Build an AI that plays chess.</p>
+<a href="#" onclick="loadIdea('CS50AI-Project-Ideas','chess-ai.md')">Read more →</a>
+</div>
+
+</div>
+
+<!-- CS50SQL -->
+
+<h2 id="cs50sql">CS50SQL – Database Projects</h2>
+
+<div class="project-grid">
+
+<div class="project">
+<span class="tag">Intermediate</span>
+<h2>Library Database</h2>
+<p>A SQL system for managing library books.</p>
+<a href="#" onclick="loadIdea('CS50SQL-Project-Ideas','library-database.md')">Read more →</a>
 </div>
 
 </div>
 
 <div id="viewer">
 <h2>Project details will appear here</h2>
-<p>Click "Read more" on a project.</p>
+<p>Click “Read more” on a project.</p>
 </div>
 
 <footer>
@@ -228,21 +269,86 @@ font-size: 14px;
 
 <script>
 
-function loadIdea(file) {
+const repos = {
+  "CS50P – Python": "CS50P-Project-Ideas",
+  "CS50x – Computer Science": "CS50x-Project-Ideas",
+  "CS50W – Web Programming": "CS50W-Project-Ideas",
+  "CS50AI – Artificial Intelligence": "CS50AI-Project-Ideas",
+  "CS50SQL – Databases": "CS50SQL-Project-Ideas"
+};
+
+const content = document.querySelector(".content");
+
+async function loadRepos() {
+
+  for (const [course, repo] of Object.entries(repos)) {
+
+    const section = document.createElement("section");
+    section.innerHTML = `<h2>${course}</h2><div class="project-grid"></div>`;
+    content.insertBefore(section, document.getElementById("viewer"));
+
+    const grid = section.querySelector(".project-grid");
+
+    const url =
+      `https://raw.githubusercontent.com/AkshajSinghal/${repo}/main/README.md`;
+
+    try {
+
+      const res = await fetch(url);
+      const md = await res.text();
+
+      const html = marked.parse(md);
+
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+
+      const links = doc.querySelectorAll("li a");
+
+      links.forEach(link => {
+
+        const title = link.textContent;
+        const file = link.getAttribute("href").replace("./","");
+
+        const card = document.createElement("div");
+        card.className = "project";
+
+        card.innerHTML = `
+          <span class="tag">${course.split("–")[0]}</span>
+          <h2>${title}</h2>
+          <p>Project idea from ${repo}</p>
+          <a href="#" onclick="loadIdea('${repo}','${file}')">Read more →</a>
+        `;
+
+        grid.appendChild(card);
+
+      });
+
+    } catch (err) {
+
+      console.error("Failed loading repo:", repo);
+
+    }
+
+  }
+
+}
+
+function loadIdea(repo,file){
 
 const url =
-"https://raw.githubusercontent.com/AkshajSinghal/CS50P-Project-Ideas/main/" + file;
+`https://raw.githubusercontent.com/AkshajSinghal/${repo}/main/${file}`;
 
 fetch(url)
-.then(response => response.text())
-.then(markdown => {
+.then(r => r.text())
+.then(md => {
 document.getElementById("viewer").innerHTML =
-marked.parse(markdown);
+marked.parse(md);
 });
 
 }
 
-</script>
+loadRepos();
 
+</script>
 </body>
 </html>
