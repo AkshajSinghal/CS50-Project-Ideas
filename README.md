@@ -13,7 +13,7 @@ Currently supported:
 
 - [Python](https://cs50.harvard.edu/python/)
 
-More languages and tracks may be added in the future.
+More languages and tracks will be added in the future.
 
 ---
 
